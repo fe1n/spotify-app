@@ -1,8 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<div><video controls src="" muted="true"></video></div>
+
 ## Getting Started
 
 First, run the development server:
+
+https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
 ```bash
 npm run dev
