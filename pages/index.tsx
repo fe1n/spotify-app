@@ -1,7 +1,7 @@
 import type { NextPage, GetServerSideProps } from "next";
 import Head from "next/head";
 import { Login } from "../components/login";
-import { Test } from "../components/test";
+import { Main } from "../components/main";
 
 type Props = {
   token: string;
@@ -18,7 +18,7 @@ const Home: NextPage<Props> = ({ token }) => {
         />
       </Head>
 
-      {token === "" ? <Login /> : <Test token={token} />}
+      {token === "" ? <Login /> : <Main token={token} />}
     </>
   );
 };

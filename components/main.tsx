@@ -10,7 +10,7 @@ type Props = {
     token: string;
 };
 
-export const Test: VFC<Props> = ({ token }) => {
+export const Main: VFC<Props> = ({ token }) => {
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
