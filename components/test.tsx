@@ -104,27 +104,6 @@ export const Test: VFC<Props> = ({ token }) => {
         console.log('hello');
     }, [url]);
 
-    async function fn() {
-        const x = new Float32Array(1 * 13).fill(0);
-        const tensor = new Tensor('float32', x, [1, 13]);
-        const out = await predict(tensor);
-        console.log(out);
-    }
-    fn();
-
-    async function fn2() {
-        // const obj = {a: "hogehoge", b: 0.2, c: 1};
-        const ur = 'https://api.spotify.com/v1/audio-features/11dFghVXANMlKmJXsNCbNl';
-        const obj = getResponse(url, token);
-        console.log(obj)
-        // const items = Object.values(obj);
-        // const filtered = items.filter((item) => {
-        //     return typeof item === 'number';
-        // })
-        // console.log(filtered);
-    }
-    fn2();
-
     return (
         <>
             <div onDragLeave={handleLeave} onDragOver={enableDropping} onDrop={handleDrop} className={style}>
