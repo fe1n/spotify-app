@@ -1,8 +1,5 @@
 import { VFC, useState, useEffect } from "react";
 import React from "react";
-import { SpotifySearchApiResponse, SearchTracksResponse } from '../lib/type/spotifyapi';
-
-import getAudioFeatures from "../lib/util/getAudioFeatures";
 import getResponse from "../lib/util/getResponse";
 import predict from "../lib/util/predict";
 import { Tensor } from 'onnxruntime-web';
