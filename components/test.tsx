@@ -29,24 +29,6 @@ export type SpotifyFeaturesApiResponse = {
 }
 
 export const Test: VFC<Props> = ({ token }) => {
-    // const playlistContentRef = useRef<HTMLDivElement>(null);
-    // useEffect(() => {
-    //     const ref = playlistContentRef.current;
-    //     console.log(ref)
-    // }, [playlistContentRef.current])
-
-    // const playlist_id: string = '37i9dQZF1DXcBWIGoYBM5M';
-    // async function myAsyncAll() {
-    //     const tracks = await getTracks(playlist_id, token);
-    //     const ids = [];
-    //     for (var item of tracks) {
-    //         ids.push(item.track.id);
-    //     }
-    //     console.log(ids)
-    //     const audioFeatures = await getAudioFeatures(ids, token);
-    //     console.log(audioFeatures)
-    // }
-    // myAsyncAll();
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
@@ -101,7 +83,6 @@ export const Test: VFC<Props> = ({ token }) => {
         if (url !== '') {
             fn();
         }
-        console.log('hello');
     }, [url]);
 
     return (
