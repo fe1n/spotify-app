@@ -1,4 +1,4 @@
-# Spotify
+# Spotify-App
 https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
 ## 概要
