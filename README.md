@@ -5,15 +5,15 @@
 https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
 ## レコメンドモデル
-入力：楽曲のAudio Features (Spotify APIにより入手）
+**入力** ：楽曲のAudio Features (Spotify APIにより入手）
 
-予測：楽曲の再生回数 （個人のストリーミング履歴から取得）
+**予測**：楽曲の再生回数 （個人のストリーミング履歴から取得）
 
-モデルは、Spotifyの長期ストリーミング履歴から取得した楽曲とその再生回数、そして楽曲のAudio Featuresから学習し、その後onnx化してNext.jsで使用しています。
+モデルは、Spotifyの長期ストリーミング履歴から取得した楽曲とその再生回数、そして楽曲のAudio Featuresにより学習し、その後onnx化してNext.jsで使用しています。
 
 ## 使用方法
 1. `npm install`を実行して、必要なモジュールをダウンロードしてください。
-2. [My Dashboard | Spotify for Developers](https://developer.spotify.com/dashboard/)からClient IDとClient Secretを入手し、以下の内容で`.env.local`ファイルをルートディレクトリに作成してください
+2. [My Dashboard | Spotify for Developers](https://developer.spotify.com/dashboard/)から __Client ID__ と __Client Secret__ を入手し、以下の内容で`.env.local`ファイルをルートディレクトリに作成してください
 
 ```
 NEXT_PUBLIC_SPOTIFY_CLIENT_ID='CLIENT_ID'
