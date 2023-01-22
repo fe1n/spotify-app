@@ -1,40 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-<div><video controls src="" muted="true"></video></div>
-
-## Getting Started
-
-First, run the development server:
-
+# Spotify
 https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
-```bash
-npm run dev
-# or
-yarn dev
+## 概要
+ドロップしたプレイリストの楽曲を、事前に学習したレコメンドモデルにより、おすすめ順にして表示します。
+
+## レコメンドモデル
+入力：楽曲のAudio Features (Spotify APIにより入手）
+
+予測：楽曲の再生回数 （個人のストリーミング履歴から取得）
+
+モデルは、Spotifyの長期ストリーミング履歴から取得した楽曲とその再生回数、そして楽曲のAudio Featuresから学習し、その後onnx化してNext.jsで使用しています。
+
+## 使用方法
+1. `npm install`を実行して、必要なモジュールをダウンロードしてください。
+2. [My Dashboard | Spotify for Developers](https://developer.spotify.com/dashboard/)からClient IDとClient Secretを入手し、以下の内容で`.env.local`ファイルをルートディレクトリに作成してください
+
 ```
+NEXT_PUBLIC_SPOTIFY_CLIENT_ID='CLIENT_ID'
+NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET='CLIENT_SECRET'
+```
+3. `npm run dev`を実行して、サーバーを起動してください、
+4. 最後にブラウザで[http://localhost:3000](http://localhost:3000)を表示し、デモ動画のようにプレイリストをドロップしてくだい。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 注意
+レコメンドモデルは、完全に作成者用に学習されています。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 参考
+以下のサイトはこのアプリを作成する上で、大変お世話になりました。この場を借りてお礼申し上げます。
+- [Next.js + TypeScript で Spotify Web Playback SDK の公式サンプルを書き直してみた](https://zenn.dev/ossamoon/articles/ef20bf19284fd8)
+- [Spotify API + Next.jsで作る選曲支援Webアプリ - Qiita](https://qiita.com/Yuki_Oshima/items/82116e4044687b16ef60)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
