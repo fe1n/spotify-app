@@ -1,7 +1,8 @@
 # Spotify-App
-https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
 ### ドロップしたプレイリストの楽曲を、事前に学習したレコメンドモデルにより、おすすめ順にして表示します。
+
+https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
 
 ## レコメンドモデル
 入力：楽曲のAudio Features (Spotify APIにより入手）
