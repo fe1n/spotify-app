@@ -10,24 +10,6 @@ type Props = {
     token: string;
 };
 
-export type AudioFeature = {
-    danceability: number,
-    energy: number,
-    id: string,
-    instrumentalness: number,
-    key: number,
-    liveness: number,
-    loudness: number,
-    mode: number,
-    tempo: number,
-    valence: number,
-    track_href: string
-}
-
-export type SpotifyFeaturesApiResponse = {
-    audio_features: AudioFeature[]
-}
-
 export const Test: VFC<Props> = ({ token }) => {
 
     const [style, setStyle] = useState('dropzone');

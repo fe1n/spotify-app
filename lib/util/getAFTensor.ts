@@ -7,7 +7,6 @@ const getAFTensor = async (url: string, accessToken: string) => {
     let filtered: any = items.filter((item) => {
         return typeof item === 'number';
     });
-    // console.log(filtered)
     filtered[10] = filtered[10] / 100;
     filtered[11] = filtered[11] / 100000;
     const x = new Float32Array(filtered);
