@@ -16,8 +16,8 @@ https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957
 2. [My Dashboard | Spotify for Developers](https://developer.spotify.com/dashboard/)から __Client ID__ と __Client Secret__ を入手し、以下の内容で`.env.local`ファイルをルートディレクトリに作成してください
 
 ```
-NEXT_PUBLIC_SPOTIFY_CLIENT_ID='CLIENT_ID'
-NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET='CLIENT_SECRET'
+SPOTIFY_CLIENT_ID='CLIENT_ID'
+SPOTIFY_CLIENT_SECRET='CLIENT_SECRET'
 ```
 3. `npm run dev`を実行して、サーバーを起動してください、
 4. 最後にブラウザで[http://localhost:3000](http://localhost:3000)を表示し、デモ動画のようにプレイリストをドロップしてくだい。
