@@ -4,6 +4,7 @@ import getResponse from "../lib/util/getResponse";
 import predict from "../lib/util/predict";
 import { Tensor } from 'onnxruntime-web';
 import getAFTensor from "../lib/util/getAFTensor";
+import getAudioFeatures from "../lib/util/getAudioFeatures";
 
 
 type Props = {
@@ -42,6 +43,16 @@ export const Main: VFC<Props> = ({ token }) => {
             let Response = await getResponse(url, token);
             setTitle(Response.data.name);
 
+            const ids: string[] = []
+            for (let item of Response.data.tracks.items) {
+                ids.push(item.track.id);
+            }
+            const afs = await getAudioFeatures(ids, token);
+
+            let audioObject: { [key: string]: object } = {};
+            for (let i = 0; i < ids.length; i++) {
+                audioObject = { ...audioObject, [ids[i]]: afs[i] };
+            }
             let data = [];
             for (let item of Response.data.tracks.items) {
                 let obj: any = { id: '', pred: 0, imgURL: '', songName: '', artistName: '' };
@@ -50,7 +61,7 @@ export const Main: VFC<Props> = ({ token }) => {
                 obj.songName = item.track.name;
                 obj.artistName = item.track.artists[0].name;
 
-                const tensor: Tensor = await getAFTensor(item.track.id, token);
+                const tensor: Tensor = await getAFTensor(audioObject[item.track.id]);
                 const pred = await predict(tensor);
                 obj.pred = pred;
 
@@ -76,7 +87,7 @@ export const Main: VFC<Props> = ({ token }) => {
                 <h1 className="playlist-name">{title}</h1>
                 <div id="playlist-box" className="playlist-box">
                     {tracksInfo.map((track: any) => (
-                        <div className="track-box">
+                        <div className="track-box" key={track.id}>
                             <img className="album-img" src={track.imgURL} />
                             <h3 className="name">{track.songName}</h3>
                             <p className="name">{track.artistName}</p>

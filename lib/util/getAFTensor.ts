@@ -1,8 +1,7 @@
 import getAudioFeatures from "./getAudioFeatures";
 import { Tensor } from "onnxruntime-web";
 
-const getAFTensor = async (url: string, accessToken: string) => {
-    const af = await getAudioFeatures(url, accessToken);
+const getAFTensor = async (af: object) => {
     const items = Object.values(af);
     let filtered: any = items.filter((item) => {
         return typeof item === 'number';
