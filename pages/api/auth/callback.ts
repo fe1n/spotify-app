@@ -32,8 +32,8 @@ const callback = async (req: NextApiRequest, res: NextApiResponse) => {
   const spotify_redirect_uri = "http://localhost:3000/api/auth/callback";
 
   let spotify_client_id: string = "";
-  if (process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID) {
-    spotify_client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+  if (process.env.SPOTIFY_CLIENT_ID) {
+    spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
   } else {
     console.error(
       'Undefined Error: An environmental variable, "SPOTIFY_CLIENT_ID", has something wrong.'
@@ -41,8 +41,8 @@ const callback = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   let spotify_client_secret: string = "";
-  if (process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET) {
-    spotify_client_secret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+  if (process.env.SPOTIFY_CLIENT_SECRET) {
+    spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
   } else {
     console.error(
       'Undefined Error: An environmental variable, "SPOTIFY_CLIENT_SECRET", has something wrong.'

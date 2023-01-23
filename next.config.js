@@ -5,9 +5,13 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   reactStrictMode: true,
-  //distDir: 'build',
-  webpack: (config, { }) => {
+  
+  env: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET
+  },
 
+  webpack: (config, { }) => {
     config.resolve.extensions.push(".ts", ".tsx");
     config.resolve.fallback = { fs: false };
 
