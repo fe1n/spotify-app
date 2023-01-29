@@ -5,13 +5,14 @@ import predict from "../lib/util/predict";
 import { Tensor } from 'onnxruntime-web';
 import getAFTensor from "../lib/util/getAFTensor";
 import getAudioFeatures from "../lib/util/getAudioFeatures";
+import { useSession } from "next-auth/react";
 
 
-type Props = {
-    token: string;
-};
+export const Main = () => {
 
-export const Main: VFC<Props> = ({ token }) => {
+    const { data } = useSession()
+    const token: string = data?.accessToken
+    console.log(token)
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
