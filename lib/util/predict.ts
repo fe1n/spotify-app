@@ -3,7 +3,7 @@ import { Tensor } from 'onnxruntime-web';
 
 const predict = async (tensor: Tensor) => {
     const session = await ort.InferenceSession
-        .create('./_next/static/chunks/pages/spotify2.onnx',
+        .create('./_next/static/chunks/pages/spotify3.onnx',
             { executionProviders: ['webgl'], graphOptimizationLevel: 'all' });
     const feeds: Record<string, ort.Tensor> = {};
     feeds[session.inputNames[0]] = tensor;

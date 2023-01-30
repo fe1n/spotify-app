@@ -10,9 +10,8 @@ import { useSession } from "next-auth/react";
 
 export const Main = () => {
 
-    const { data } = useSession()
-    const token: string = data?.accessToken
-    console.log(token)
+    const { data: session } = useSession()
+    const token: string = session?.accessToken
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
