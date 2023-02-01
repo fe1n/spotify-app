@@ -149,6 +149,7 @@ body {
 }
 
 .track-box {
+  position: relative;
   height: 400px;
   width: 300px;
   margin: 20px;
@@ -156,6 +157,18 @@ body {
 
 .name {
   text-align: center;
+}
+
+.play-button {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  height: 240px;
+  width: 240px;
+  opacity: 0.2;
+}
+.play-button:hover {
+  opacity: 0.75
 }
 
 img { background: transparent; }

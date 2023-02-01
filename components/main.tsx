@@ -1,4 +1,4 @@
-import { VFC, useState, useEffect } from "react";
+import { VFC, useState, useEffect, useRef } from "react";
 import React from "react";
 import getResponse from "../lib/util/getResponse";
 import predict from "../lib/util/predict";
@@ -6,17 +6,24 @@ import { Tensor } from 'onnxruntime-web';
 import getAFTensor from "../lib/util/getAFTensor";
 import getAudioFeatures from "../lib/util/getAudioFeatures";
 import { useSession } from "next-auth/react";
+import TrackBox from "./module";
 
 
 export const Main = () => {
 
     const { data: session } = useSession()
-    const token: string = session?.accessToken
+    const token: string = session?.accessToken;
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
     const [title, setTitle] = useState('');
     const [tracksInfo, setTracksInfo] = useState<any>([]);
+
+    const [deviceId, setDeviceId] = useState<string>();
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [playingTrack, setPlayingTrack] = useState<any>();
+
+    const playerRef = useRef<Spotify.SpotifyPlayer | null>(null);
 
     const enableDropping = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -36,6 +43,31 @@ export const Main = () => {
     const handleLeave = (event: React.DragEvent<HTMLDivElement>) => {
         setStyle('dropzone');
     }
+
+    useEffect(() => {
+        if (token) {
+            window.onSpotifyWebPlaybackSDKReady = () => {
+                const player = new Spotify.Player({
+                    name: 'Web Playback SDK',
+                    getOAuthToken: async (cb) => {
+                        cb(token as string);
+                    },
+                    volume: 0.5,
+                });
+                player.addListener('ready', ({ device_id }) => {
+                    setDeviceId(device_id);
+                });
+                player.connect();
+                playerRef.current = player;
+                console.log("player", player);
+            };
+            if (!window.Spotify) {
+                const scriptTag = document.createElement('script');
+                scriptTag.src = 'https://sdk.scdn.co/spotify-player.js';
+                document.head!.appendChild(scriptTag);
+            }
+        }
+    }, [token]);
 
     useEffect(() => {
         const fn = async () => {
@@ -86,13 +118,21 @@ export const Main = () => {
             <div>
                 <h1 className="playlist-name">{title}</h1>
                 <div id="playlist-box" className="playlist-box">
-                    {tracksInfo.map((track: any) => (
-                        <div className="track-box" key={track.id}>
-                            <img className="album-img" src={track.imgURL} />
-                            <h3 className="name">{track.songName}</h3>
-                            <p className="name">{track.artistName}</p>
-                        </div>
-                    ))}
+                    {tracksInfo.map((track: any) => {
+                        return (
+                            <TrackBox
+                                key={track.id}
+                                track={track}
+                                isPlaying={isPlaying}
+                                setIsPlaying={setIsPlaying}
+                                playingTrack={playingTrack}
+                                setPlayingTrack={setPlayingTrack}
+                                playerRef={playerRef}
+                                deviceId={deviceId}
+                                token={token}
+                            />
+                        )
+                    })}
                 </div>
             </div>
         </>
