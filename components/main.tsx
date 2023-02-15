@@ -12,7 +12,10 @@ import TrackBox from "./module";
 export const Main = () => {
 
     const { data: session } = useSession()
-    const token: string = session?.accessToken;
+    let token: string = ''
+    if (session && 'accessToken' in session) {
+        token = String(session?.accessToken);
+    }
 
     const [style, setStyle] = useState('dropzone');
     const [url, setURL] = useState('');
