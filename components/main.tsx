@@ -61,11 +61,6 @@ export const Main = () => {
                 player.connect();
                 playerRef.current = player;
             };
-            // if (!window.Spotify) {
-            //     const scriptTag = document.createElement('script');
-            //     scriptTag.src = 'https://sdk.scdn.co/spotify-player.js';
-            //     document.head!.appendChild(scriptTag);
-            // }
         }
     }, [session, window.performance]);
 
