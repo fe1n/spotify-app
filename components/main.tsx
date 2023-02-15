@@ -26,7 +26,7 @@ export const Main = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [playingTrack, setPlayingTrack] = useState<any>();
 
-    const playerRef = useRef<Spotify.SpotifyPlayer | null>(null);
+    const playerRef = useRef<any>(null);
 
     const enableDropping = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();

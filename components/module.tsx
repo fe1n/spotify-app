@@ -7,7 +7,7 @@ const TrackBox: React.FunctionComponent<{
     setIsPlaying: (b: boolean) => void,
     playingTrack?: any,
     setPlayingTrack: any,
-    playerRef: React.MutableRefObject<Spotify.SpotifyPlayer | null>,
+    playerRef: React.MutableRefObject<any>,
     deviceId?: string,
     token: string,
 }> = ({
