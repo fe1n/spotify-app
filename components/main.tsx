@@ -5,13 +5,14 @@ import predict from "../lib/util/predict";
 import { Tensor } from 'onnxruntime-web';
 import getAFTensor from "../lib/util/getAFTensor";
 import getAudioFeatures from "../lib/util/getAudioFeatures";
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import TrackBox from "./module";
 
 
 export const Main = () => {
 
-    const { data: session } = useSession()
+    const { data: session } = useSession();
+
     let token: string = ''
     if (session && 'accessToken' in session) {
         token = String(session?.accessToken);
