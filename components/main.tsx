@@ -7,6 +7,7 @@ import getAFTensor from "../lib/util/getAFTensor";
 import getAudioFeatures from "../lib/util/getAudioFeatures";
 import { useSession } from "next-auth/react";
 import TrackBox from "./module";
+import { isWindowDefined } from "swr/_internal";
 
 
 export const Main = () => {
@@ -59,17 +60,26 @@ export const Main = () => {
                 });
                 player.connect();
                 playerRef.current = player;
-                console.log("player", player);
             };
-            if (!window.Spotify) {
-                const scriptTag = document.createElement('script');
-                scriptTag.src = 'https://sdk.scdn.co/spotify-player.js';
-                document.head!.appendChild(scriptTag);
-            }
+            // if (!window.Spotify) {
+            //     const scriptTag = document.createElement('script');
+            //     scriptTag.src = 'https://sdk.scdn.co/spotify-player.js';
+            //     document.head!.appendChild(scriptTag);
+            // }
         }
-    }, [token]);
+    }, [session, window.performance]);
 
     useEffect(() => {
+        // SDKの再設定
+        let script = document.getElementById("spotify-sdk");
+        if (script) {
+            document.head.removeChild(script);
+        }
+        const scriptTag = document.createElement('script');
+        scriptTag.src = 'https://sdk.scdn.co/spotify-player.js';
+        scriptTag.id = 'spotify-sdk'
+        document.head!.appendChild(scriptTag);
+
         const fn = async () => {
             console.log(url);
             let Response = await getResponse(url, token);

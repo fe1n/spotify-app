@@ -29,7 +29,7 @@ async function refreshAccessToken(token) {
         return {
             ...token,
             accessToken: refreshedTokens.access_token,
-            accessTokenExpires: Date.now() + account.expires_in * 1000,
+            accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
             refreshToken: refreshedTokens.refresh_token ?? token.refreshToken, // Fall back to old refresh token
         };
     } catch (error) {
@@ -47,7 +47,7 @@ export const authOptions = {
         SpotifyProvider({
             clientId: process.env.SPOTIFY_CLIENT_ID,
             clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-            authorization: "https://accounts.spotify.com/authorize?scope=streaming,user-modify-playback-state,user-read-email,user-read-private"
+            authorization: "https://accounts.spotify.com/authorize?scope=streaming,user-read-private,user-modify-playback-state,user-read-email"
         })
     ],
 

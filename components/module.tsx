@@ -20,7 +20,6 @@ const TrackBox: React.FunctionComponent<{
     deviceId,
     token,
 }) => {
-        console.log('inchilid', playerRef.current);
         return (
             <div className="track-box" key={track.id}>
                 <img className="album-img" src={track.imgURL} />
