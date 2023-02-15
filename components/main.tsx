@@ -7,7 +7,6 @@ import getAFTensor from "../lib/util/getAFTensor";
 import getAudioFeatures from "../lib/util/getAudioFeatures";
 import { useSession } from "next-auth/react";
 import TrackBox from "./module";
-import { isWindowDefined } from "swr/_internal";
 
 
 export const Main = () => {
