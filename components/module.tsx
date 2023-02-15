@@ -26,8 +26,11 @@ const TrackBox: React.FunctionComponent<{
                 {(isPlaying && playingTrack && track.id === playingTrack.id) ? (
                     <AiFillPauseCircle className='play-button'
                         onClick={() => {
-                            playerRef.current?.pause();
-                            setIsPlaying(false);
+                            const fn = async () => {
+                                playerRef.current?.pause();
+                                setIsPlaying(false);
+                            }
+                            fn();
                         }}
                     />
                 ) : (
@@ -37,10 +40,9 @@ const TrackBox: React.FunctionComponent<{
                                 playerRef.current?.togglePlay();
                                 setIsPlaying(true);
                             } else {
-                                playerRef.current?.pause();
                                 setPlayingTrack(track);
                                 try {
-                                    playTrack(deviceId, track.id, token)
+                                    playTrack(deviceId, track.id, token);
                                     setIsPlaying(true);
                                 } catch (e) {
                                     setPlayingTrack();
