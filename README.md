@@ -2,7 +2,7 @@
 
 ### ドロップしたプレイリストの楽曲を、学習済みのレコメンドモデルによりおすすめ順に並び替えて表示します。
 
-https://user-images.githubusercontent.com/102020120/213918288-613fa117-774f-4957-88dc-59276f9aa914.mp4
+https://user-images.githubusercontent.com/102020120/219248423-d5a690f6-232f-48d2-8976-05118d3d76bb.mp4
 
 ## レコメンドモデル
 **入力** ：楽曲のAudio Features (Spotify APIにより入手）
